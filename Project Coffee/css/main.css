@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;900&display=swap');
+
+*,*:before, *::after {
+    box-sizing: border-box; /* Блоки не будут растягиваться по ширине*/
+}
+
+body {
+    margin: 0;
+    background-color: #020204;
+    font-family: 'Jost', sans-serif;
+    color: #fff;
+}
+img {
+    display: block;
+}
+.container {
+    width: 1200px;
+    margin: 0 auto;  /* Для того, чтобы container стал по центру */
+}
+
+
+.btn { /* Стиль для самих кнопок*/
+    min-width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    display: inline-flex; /* Чтобы по умолчанию не растягивалсь на всю ширину*/
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+    
+}
+
+.btn-main {
+    background-color: #C7A17A;
+}
+.btn-main:hover {
+    background-color: #9b7c5d;
+}
+.btn-secondary {
+    border: 1px solid #666681;
+}
+.btn-secondary:hover {
+    background-color: #666681;
+}
+
+/* Header */
+.header {
+    border-bottom: 1px solid #32323D;  /* Линия снизу в header */
+}
+.header__line {
+    border-bottom: 1px solid #32323D;
+}
+.header__line-wrapper {
+    display: flex;
+    justify-content: space-between; /* Рассталкивает элементы грубо говоря по частям, не работает без св-ва display flex!!! */
+    height: 30px;
+    align-items: center; /* Выравнивает по вертикали, по центру все элементы, которые находятся внутри header__line-wrapper */
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+.header__line_language {
+    display: flex; /* Добавили для того, чтобы при добавлении новых элементов, отступы не сбрасывались */
+}
+.header__line_language a.active {
+    color: #C7A17A;
+
+}
+.header__line_language a {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+.header__line_number {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.header__wrapper {
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav {
+    display: flex;
+}
+.nav-footer {
+    flex-direction: column;
+    align-items: flex-start;
+}
+.nav-footer .nav__link {
+    margin-right: 0;
+    margin-bottom: 20px;
+}
+.nav__link {
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-right: 35px;
+    transition: color 0.2s ease-in;
+}
+
+.nav__link:hover {
+    color: #C7A17A;
+}
+.nav__link.active {
+    color: #C7A17A;
+}
+
+.logo img {
+    height: 54px;
+}
+
+.header__actions {
+    display: flex;
+    align-items: center;
+}
+.header__actions-link {
+    margin-right: 30px;
+    position: relative; /* Сообщили о том, что этот блок является родителем, т.к если бы не указали, что он являтеся родителем, то он был был бы углу и появился бы скролл. */
+}
+.header__block {
+    width: 40%; /* 10 % ширины на логотип */
+}
+.header__block.right {
+    display: flex;
+    justify-content: flex-end;
+}
+.header__actions-link:last-child {  /* last-child - взяли последний элемент и дали отступ*/ 
+    margin-right: 0;
+}
+.header__actions-link-event {
+    width: 6px;
+    height: 6px;
+    background-color: #C7A17A;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+}
+
+/* /.Header */
+
+/* Intro */
+.intro {
+    background-repeat: no-repeat; /* Свойство которое говорит, чтобы картинки не повторялись*/
+    background-size: cover; /* Св-во которое растягивает картинку полностью на весь экран */
+    position: relative; /* Указали как родитель*/
+    margin-bottom: 100px;
+}
+.intro::after { /* Сделали затемнение как на самом макете*/
+    width: 100%;
+    height: 100%;
+    content: ''; /* Без этого св-ва у нас бы просто напросто бы ничего не отобразилось */
+    position: absolute; /* Не занимает пространства на сайте */
+    top: 0; /* Прижимаем к верхнему и левому углу */
+    left: 0;
+    background: rgba(2, 2, 4, 0.55);
+}
+.intro_wrapper {
+    min-height: 720px; /* отличие от height в том, что если изменится что-то в этом блоке, то оно будет выходить за пределы заданной высоты, а то, что указали мы, не будет выходить за пределы. */
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    position: relative; /* Добавили position и z-index, чтобы интро было поверх затемнения*/
+    z-index: 2; /* По умолчанию у всех z-index - 1, -> 2 - чтобы было ссверху. */
+}
+
+.intro__block {
+    max-width: 565px; /* данное свойство не дает растягиваться нашему блоку чем на 565 px*/
+}
+.intro__title {
+    line-height: 1.4;
+    font-size: 60px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 35px; /* убрали отстуты между заголовком и текстом*/
+}
+
+.intro__text {
+    margin: 0 0 35px;
+    color: #DFDFDF;
+    font-size: 18px;
+}
+.intro__sections {
+    display: flex; /* Указали здесь для того, чтобы расстояние до кнопки стало 20px*/
+}
+.intro__sections .btn-main {
+    margin-right: 20px;
+}
+/* /.Intro */
+
+/* Dashboard, info */
+.info__block {
+    display: flex;
+    border-radius: 10px;
+    background: #14141D;
+    overflow: hidden; /* Убрали края, т.к картина в jpg (запрещает показывать, все, что вышло за границы)*/
+    margin-bottom: 80px;
+}
+.info__item {
+    padding: 30px;
+}
+.info__image {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px; /* Загнули самой картинке края*/
+    width: 100%;
+    height: 100%; /* Не можем использовать background-size cover, т.к это img а не background */
+    object-fit: cover; /* Добавили ширину и высоту, чтобы растягивалось на макс, + object-fit cover дает св-во растягиваться картинке, при этом не теряя качество */
+}
+.info__image-wrapper {
+    position: relative;
+}
+.info__image-wrapper::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.50);
+
+}
+.info__title {
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+.info__text {
+    max-width: 500px;
+    font-size: 18px;
+    color: #DFDFDF;
+    line-height: normal;
+}
+
+/* /.Daschboard, info */
+.block__title {
+    margin: 0 0 40px;
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+}
+/* Products */
+
+.products__wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 -10px 60px; /* -10 px слева и справа */
+}
+.product__block {
+    width: 33.33%; /* Должны быть 3 блока в 1 строку */
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+.products__item {
+    background-color: #14141D;
+    border-radius: 10px;
+    padding: 20px;
+    transition: background-color 0.2s ease-in;
+    display: block;
+}
+.products__item:hover {
+    background-color: #22222F;
+}
+.products__img {
+    margin: 0 auto 40px;
+    max-height: 200px;
+    max-width: 100px;
+    display: block;
+}
+.products__title {
+    margin: 0; /* у заголовка h3 есть отступы, их нужно было убрать */
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+.products__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.products__price {
+    color: #FFF;
+    font-size: 18px;
+    display: flex;
+}
+.products__price del {
+    margin-left: 30px;
+    color: #818181;
+}
+.products__favorite {
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    border: 0;
+}
+
+/* /.Products */
+
+/* NEWS */
+.blokc__title {
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+}
+.news__block {
+    width: 33.33%;
+    padding: 0 10px;
+    margin-bottom: 20px; /* В случае если появится 4 новость и попадет на следующую строку */
+}
+.news__item {
+    min-height: 100%;
+    display: block;
+    background-color: #14141D;
+    transition: background-color 0.2s ease-in;
+    border-radius: 10px;
+}
+.news__item:hover {
+    background-color: #22222F;
+}
+.news_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px 60px;
+}
+.news__content {
+    padding: 20px;
+}
+.news__img {
+    height: 240px;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.news__title {
+    margin: 0 0 10px;
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.news__text {
+    margin: 0;
+    color: #DFDFDF;
+}
+
+/* Footer */
+.footer {
+    border-top: 2px solid #14141D;
+    padding-top: 80px;
+    padding-bottom: 60px;
+}
+.footer__wrapper {
+    display: flex;
+    margin: 0 -10px;
+}
+.footer__block {
+    width: 33.33%;
+    padding: 0 10px;
+}
+/* /.Footer */
